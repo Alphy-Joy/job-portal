@@ -41,20 +41,20 @@
                     @if ($state->status == 1)
                         @php
                             $status = "Active";
-                            $class = "badge badge-success";
+                            $class = "btn btn-block btn-sm btn-success";
                         @endphp
 
                     @else
                         @php
                             $status = "Inactive";
-                            $class = "badge badge-danger";
+                            $class = "btn btn-block btn-sm btn-danger";
                         @endphp
 
                     @endif
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{ $state->name }}</td>
-                    <td><button type="submit" class="{{ $class }}">{{ $status }}</button></td>
+                    <td><a href="/admin/states/updateStatus/{{  $state->id  }}/{{ $state->status }}" class="{{ $class }}">{{ $status }}</a></td>
                     <td> 
                         <a href="/admin/states/{{ $state->id }}/edit" class="btn btn-sm btn-gradient-info">Edit</a>
                         <form action="/admin/states/{{ $state->id }}" method="post">

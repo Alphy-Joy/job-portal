@@ -72,7 +72,7 @@ class StateController extends Controller
     public function edit($id)
     {
         return view('state.edit')
-        ->with('states',State::where('id',$id)->first());
+        ->with('state',State::where('id',$id)->first());
     }
 
     /**
@@ -84,7 +84,13 @@ class StateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        State::where('id',$id)->update([
+            'name' => $request->input('state_name'),
+            'status' => '1'
+        ]);
+
+
+        return redirect('/admin/states')->with('message', 'State has been updated');
     }
 
     /**
@@ -97,6 +103,15 @@ class StateController extends Controller
     {
         $state = State::where('id',$id);
         $state->delete();
+        return redirect('/admin/states')->with('message', 'State has been deleted');
+    }
+
+    public function updateStatus($id,$status)
+    {
+        dd($id);
+        State::where('id',$id)->update([
+            'status' => '1'
+        ]);
         return redirect('/admin/states')->with('message', 'State has been deleted');
     }
 }
