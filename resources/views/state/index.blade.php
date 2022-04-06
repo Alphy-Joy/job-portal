@@ -3,23 +3,22 @@
 @section('content')
 
 <div class="page-header">
-    @if (session()->has('message'))
 
-    <div >
-        <p >
-            {{ session()->get('message') }}
-        </p>
-    </div>
-    
-@endif
     <h3 class="page-title"> States </h3>
-    
+
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <a href="/admin/states/create" class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Add New State</a>
       </ol>
     </nav>
   </div>
+  @if (session()->has('message'))
+  <div class="row">
+      <div class="col-lg-10">
+          <label class="badge badge-gradient-success">{{ session()->get('message') }}</label>
+      </div>
+  </div>
+@endif
   <div class="row">
     <div class="col-lg-10 grid-margin stretch-card">
       <div class="card">
@@ -58,7 +57,12 @@
                     <td><button type="submit" class="{{ $class }}">{{ $status }}</button></td>
                     <td> 
                         <a href="/admin/states/{{ $state->id }}/edit" class="btn btn-sm btn-gradient-info">Edit</a>
-                        <button type="submit" class="btn btn-sm btn-gradient-danger">Delete</button>
+                        <form action="/admin/states/{{ $state->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-gradient-danger">Delete</button>
+                        </form>
+                        
                     </td>
                     
                   </tr>

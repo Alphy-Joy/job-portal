@@ -40,9 +40,9 @@ class StateController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required'
-        ]);
+        // $request->validate([
+        //     'name' => 'required'
+        // ]);
         State::create([
             'name' => $request->input('state_name'),
             'status' => '1'
@@ -95,6 +95,8 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $state = State::where('id',$id);
+        $state->delete();
+        return redirect('/admin/states')->with('message', 'State has been deleted');
     }
 }
