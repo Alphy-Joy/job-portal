@@ -17,9 +17,10 @@ class StateController extends Controller
     {
         $states = State::paginate(15);
         return view('state.index',[
-            'states' =>$states
+            'states' =>$states,
         ]
-    );
+        );
+        //return view('state.index', compact('states', $states))->with('no', 1);
     }
 
     /**

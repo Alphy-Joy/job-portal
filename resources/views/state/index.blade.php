@@ -15,7 +15,7 @@
   @if (session()->has('message'))
   <div class="row">
       <div class="col-lg-10">
-          <label class="badge badge-success">{{ session()->get('message') }}</label>
+          <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
       </div>
   </div>
 @endif
@@ -55,7 +55,7 @@
                     <td><a href="/admin/states/status/{{  $state->id  }}/{{ $state->status }}" class="{{ $class }}">{{ $status }}</a></td>
                     <td> 
                         <a href="/admin/states/{{ $state->id }}/edit" class="btn btn-sm btn-gradient-info">Edit</a>
-                        <form action="/admin/states/{{ $state->id }}" method="post">
+                        <form action="/admin/states/{{ $state->id }}" method="post" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-gradient-danger">Delete</button>
