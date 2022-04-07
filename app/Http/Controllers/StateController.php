@@ -106,12 +106,12 @@ class StateController extends Controller
         return redirect('/admin/states')->with('message', 'State has been deleted');
     }
 
-    public function updateStatus($id,$status)
-    {
-        dd($id);
+    public function status($id,$status)
+    {  
+        $status = ($status == 1) ? 0 : 1;
         State::where('id',$id)->update([
-            'status' => '1'
+            'status' => $status
         ]);
-        return redirect('/admin/states')->with('message', 'State has been deleted');
+        return redirect('/admin/states')->with('message', 'State has been updated');
     }
 }

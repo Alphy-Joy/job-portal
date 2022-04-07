@@ -15,7 +15,7 @@
   @if (session()->has('message'))
   <div class="row">
       <div class="col-lg-10">
-          <label class="badge badge-gradient-success">{{ session()->get('message') }}</label>
+          <label class="badge badge-success">{{ session()->get('message') }}</label>
       </div>
   </div>
 @endif
@@ -24,8 +24,6 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">List States</h4>
-          
-          <br>
           <table class="table table-hover">
             
             <thead>
@@ -54,7 +52,7 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{ $state->name }}</td>
-                    <td><a href="/admin/states/updateStatus/{{  $state->id  }}/{{ $state->status }}" class="{{ $class }}">{{ $status }}</a></td>
+                    <td><a href="/admin/states/status/{{  $state->id  }}/{{ $state->status }}" class="{{ $class }}">{{ $status }}</a></td>
                     <td> 
                         <a href="/admin/states/{{ $state->id }}/edit" class="btn btn-sm btn-gradient-info">Edit</a>
                         <form action="/admin/states/{{ $state->id }}" method="post">
