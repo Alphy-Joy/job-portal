@@ -4,11 +4,11 @@
 
 <div class="page-header">
 
-    <h3 class="page-title"> Categories </h3>
+    <h3 class="page-title"> Skills </h3>
 
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <a href="/admin/categories/create" class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Add New Category</a>
+        <a href="/admin/skills/create" class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Add New Skill</a>
       </ol>
     </nav>
   </div>
@@ -23,20 +23,20 @@
     <div class="col-lg-10 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">List Categories</h4>
+          <h4 class="card-title">List Skills</h4>
           <table class="table table-hover">
             
             <thead>
               <tr>
                 <th><strong>Sl No</strong> </th>
-                <th><strong>Category</strong></th>
+                <th><strong>Skill</strong></th>
                 <th><strong>Status</strong></th>
                 <th><strong>Actions</strong></th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $category)
-                    @if ($category->status == 1)
+                @foreach ($skills as $skill)
+                    @if ($skill->status == 1)
                         @php
                             $status = "Active";
                             $class = "btn btn-block btn-sm btn-success";
@@ -51,11 +51,11 @@
                     @endif
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{ $category->name }}</td>
-                    <td><a href="/admin/categories/status/{{  $category->id  }}/{{ $category->status }}" class="{{ $class }}">{{ $status }}</a></td>
+                    <td>{{ $skill->name }}</td>
+                    <td><a href="/admin/skills/status/{{  $skill->id  }}/{{ $skill->status }}" class="{{ $class }}">{{ $status }}</a></td>
                     <td> 
-                        <a href="/admin/categories/{{ $category->id }}/edit" class="btn btn-sm btn-gradient-info">Edit</a>
-                        <form action="/admin/categories/{{ $category->id }}" method="post" style="display: inline-block;">
+                        <a href="/admin/skills/{{ $skill->id }}/edit" class="btn btn-sm btn-gradient-info">Edit</a>
+                        <form action="/admin/skills/{{ $skill->id }}" method="post" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-gradient-danger">Delete</button>
@@ -75,7 +75,7 @@
       
     </div>
 
-    {{ $categories->links() }} --}}
+    {{ $skills->links() }}
   </div>
  
 @endsection

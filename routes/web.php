@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryContoller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\SkillContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,5 @@ Route::resource('/admin/locations', LocationController::class );
 Route::get('/admin/locations/status/{id}/{status}', 'App\Http\Controllers\LocationController@status');
 Route::resource('/admin/categories', CategoryContoller::class );
 Route::get('/admin/categories/status/{id}/{status}', 'App\Http\Controllers\CategoryContoller@status');
+Route::resource('/admin/skills', SkillContoller::class );
+Route::get('/admin/skills/status/{id}/{status}', 'App\Http\Controllers\SkillContoller@status');
