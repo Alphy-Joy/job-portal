@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryContoller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\LocationController;
@@ -22,3 +23,5 @@ Route::get('/admin/states/status/{id}/{status}', 'App\Http\Controllers\StateCont
 //Route::post('/admin/states/loc', [StateController::class, 'loc']);
 Route::resource('/admin/locations', LocationController::class );
 Route::get('/admin/locations/status/{id}/{status}', 'App\Http\Controllers\LocationController@status');
+Route::resource('/admin/categories', CategoryContoller::class );
+Route::get('/admin/categories/status/{id}/{status}', 'App\Http\Controllers\CategoryContoller@status');
