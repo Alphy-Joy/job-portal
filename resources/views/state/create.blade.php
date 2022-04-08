@@ -17,7 +17,7 @@
               <input type="text" class="form-control" id="state_name" name="state_name" placeholder="State Name">
             </div>
             <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-            <button type="button" class="btn btn-outline-danger btn-fw">Danger</button>
+            <button type="reset" class="btn btn-outline-danger btn-fw">Reset</button>
           </form>
         </div>
       </div>

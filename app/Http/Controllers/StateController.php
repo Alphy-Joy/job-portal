@@ -20,7 +20,6 @@ class StateController extends Controller
             'states' =>$states,
         ]
         );
-        //return view('state.index', compact('states', $states))->with('no', 1);
     }
 
     /**
@@ -113,6 +112,6 @@ class StateController extends Controller
         State::where('id',$id)->update([
             'status' => $status
         ]);
-        return redirect('/admin/states')->with('message', 'State has been updated');
+        return redirect('/admin/states')->with('message', 'State status has been updated');
     }
 }

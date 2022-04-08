@@ -19,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin/dashboard', [DashboardController::class,'index'] );
 Route::resource('/admin/states', StateController::class);
 Route::get('/admin/states/status/{id}/{status}', 'App\Http\Controllers\StateController@status');
+//Route::post('/admin/states/loc', [StateController::class, 'loc']);
 Route::resource('/admin/locations', LocationController::class );
+Route::get('/admin/locations/status/{id}/{status}', 'App\Http\Controllers\LocationController@status');

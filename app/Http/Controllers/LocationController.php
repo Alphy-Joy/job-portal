@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -13,7 +15,11 @@ class LocationController extends Controller
      */
     public function index()
     {
-        
+        $locations = Location::paginate(15);
+        return view('location.index',[
+            'locations' => $locations
+        ]
+    );
     }
 
     /**
@@ -23,7 +29,10 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        $states = State::where('status', '=','1')->orderBy('name','asc')->get();
+        return view('location.create',[
+            'states' =>$states
+        ]);
     }
 
     /**
@@ -34,7 +43,15 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->input('location_name'));
+        Location::create([
+            'name' => $request->input('location_name'),
+            'state_id' => $request->input('state_id'),
+            'status' => '1'
+        ]);
+
+
+        return redirect('/admin/locations')->with('message', 'New location has been added');
     }
 
     /**
@@ -56,7 +73,12 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $states = State::where('status', '=','1')->orderBy('name','asc')->get();
+        $location = Location::where('id',$id)->first();
+        return view('location.edit',[
+            'location' => $location,
+            'states' => $states
+        ]);
     }
 
     /**
@@ -68,7 +90,14 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Location::where('id',$id)->update([
+            'name' => $request->input('location_name'),
+            'state_id' => $request->input('state_id'),
+            'status' => '1'
+        ]);
+
+
+        return redirect('/admin/locations')->with('message', 'New location has been added');
     }
 
     /**
@@ -79,6 +108,17 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $location = Location::where('id',$id);
+        $location->delete();
+        return redirect('/admin/locations')->with('message', 'Location has been deleted');
+    }
+
+    public function status($id,$status)
+    {  
+        $status = ($status == 1) ? 0 : 1;
+        Location::where('id',$id)->update([
+            'status' => $status
+        ]);
+        return redirect('/admin/locations')->with('message', 'Location status has been updated');
     }
 }

@@ -9,5 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class State extends Model
 {
     use HasFactory;
+
+    protected $table = 'states';
+    protected $primaryKey = 'id';
     protected $fillable = ['name','status'];
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }
