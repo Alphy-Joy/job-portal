@@ -16,7 +16,7 @@ class StateController extends Controller
     public function index()
     {
         $states = State::paginate(15);
-        return view('state.index',[
+        return view('admin.state.index',[
             'states' =>$states,
         ]
         );
@@ -29,7 +29,7 @@ class StateController extends Controller
      */
     public function create()
     {
-        return view('state.create');
+        return view('admin.state.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class StateController extends Controller
      */
     public function edit($id)
     {
-        return view('state.edit')
+        return view('admin.state.edit')
         ->with('state',State::where('id',$id)->first());
     }
 

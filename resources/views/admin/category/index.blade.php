@@ -75,7 +75,7 @@
       
     </div>
 
-    {{ $categories->links() }} --}}
+    {{ $categories->links() }} 
   </div>
  
 @endsection

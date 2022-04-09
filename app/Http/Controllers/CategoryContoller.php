@@ -15,7 +15,7 @@ class CategoryContoller extends Controller
     public function index()
     {
         $categories = Category::paginate(15);
-        return view('category.index',[
+        return view('admin.category.index',[
             'categories' => $categories
         ]);
     }
@@ -27,7 +27,7 @@ class CategoryContoller extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        return view('admin.category.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoryContoller extends Controller
      */
     public function edit($id)
     {
-        return view('category.edit')
+        return view('admin.category.edit')
         ->with('category',Category::where('id',$id)->first());
     }
 

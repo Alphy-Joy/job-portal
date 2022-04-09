@@ -16,7 +16,7 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::paginate(15);
-        return view('location.index',[
+        return view('admin.location.index',[
             'locations' => $locations
         ]
     );
@@ -30,7 +30,7 @@ class LocationController extends Controller
     public function create()
     {
         $states = State::where('status', '=','1')->orderBy('name','asc')->get();
-        return view('location.create',[
+        return view('admin.location.create',[
             'states' =>$states
         ]);
     }
@@ -75,7 +75,7 @@ class LocationController extends Controller
     {
         $states = State::where('status', '=','1')->orderBy('name','asc')->get();
         $location = Location::where('id',$id)->first();
-        return view('location.edit',[
+        return view('admin.location.edit',[
             'location' => $location,
             'states' => $states
         ]);

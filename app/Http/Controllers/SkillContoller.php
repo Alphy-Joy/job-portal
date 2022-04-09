@@ -15,7 +15,7 @@ class SkillContoller extends Controller
     public function index()
     {
         $skills = Skill::paginate(15);
-        return view('skill.index',[
+        return view('admin.skill.index',[
             'skills' => $skills
         ]);
     }
@@ -27,7 +27,7 @@ class SkillContoller extends Controller
      */
     public function create()
     {
-        return view('skill.create');
+        return view('admin.skill.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class SkillContoller extends Controller
      */
     public function edit($id)
     {
-        return view('skill.edit')
+        return view('admin.skill.edit')
         ->with('skill',Skill::where('id',$id)->first());
     }
 
