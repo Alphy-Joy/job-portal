@@ -27,6 +27,7 @@
         <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
       </a>
     </li>
+    @if (Auth::user()->role == 1)
     <li class="{{ request()->is('admin/dashboard') ? 'nav-item active' : 'nav-item' }}">
       <a class="nav-link" href="{{ url('/admin/dashboard') }}">
         <span class="menu-title">Dashboard</span>
@@ -57,4 +58,30 @@
         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
       </a>
     </li>
+    @elseif (Auth::user()->role == 2)
+    <li class="{{ request()->is('employer/dashboard') ? 'nav-item active' : 'nav-item' }}">
+      <a class="nav-link" href="{{ url('/employer/dashboard') }}">
+        <span class="menu-title">Dashboard</span>
+        <i class="mdi mdi-home menu-icon"></i>
+      </a>
+    </li>
+    <li class="{{ request()->is('employer/profile') ? 'nav-item active' : 'nav-item' }}">
+      <a class="nav-link" href="{{ url('/employer/profile') }}">
+        <span class="menu-title">Profile</span>
+        <i class="mdi mdi-home menu-icon"></i>
+      </a>
+    </li>
+    <li class="{{ request()->is('employer/departments') ? 'nav-item active' : 'nav-item' }}">
+      <a class="nav-link" href="{{ url('/employer/departments') }}">
+        <span class="menu-title">Departments</span>
+        <i class="mdi mdi-home menu-icon"></i>
+      </a>
+    </li>
+    <li class="{{ request()->is('employer/jobs') ? 'nav-item active' : 'nav-item' }}">
+      <a class="nav-link" href="{{ url('/employer/jobs') }}">
+        <span class="menu-title">Jobs</span>
+        <i class="mdi mdi-home menu-icon"></i>
+      </a>
+    </li>
+    @endif
   </ul>

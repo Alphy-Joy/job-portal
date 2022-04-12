@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobseekerController;
@@ -43,6 +44,8 @@ Route::group(['prefix' => 'employer','middleware' => ['isEmployer','auth']], fun
     Route::get('dashboard',[EmployerController::class,'index'])->name('employer.dashboard');
     Route::get('profile',[EmployerController::class,'profile'])->name('employer.profile');
     Route::get('settings',[EmployerController::class,'settings'])->name('employer.settings');
+    Route::resource('departments', DepartmentController::class );
+    Route::get('departments/status/{id}/{status}', 'App\Http\Controllers\DepartmentController@status');
 });
 
 Route::group(['prefix' => 'jobseeker','middleware' => ['isJobseeker','auth']], function(){
