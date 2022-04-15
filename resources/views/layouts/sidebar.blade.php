@@ -65,9 +65,9 @@
         <i class="mdi mdi-home menu-icon"></i>
       </a>
     </li>
-    <li class="{{ request()->is('employer/profile') ? 'nav-item active' : 'nav-item' }}">
-      <a class="nav-link" href="{{ url('/employer/profile') }}">
-        <span class="menu-title">Profile</span>
+    <li class="{{ request()->is('employer/profile/show') ? 'nav-item active' : 'nav-item' }}">
+      <a class="nav-link" href="{{ url('/employer/profile/show') }}">
+        <span class="menu-title">Company Profile</span>
         <i class="mdi mdi-home menu-icon"></i>
       </a>
     </li>

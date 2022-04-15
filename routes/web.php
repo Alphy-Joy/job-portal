@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmployerProfileController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobseekerController;
 use App\Http\Controllers\CategoryContoller;
@@ -42,7 +43,8 @@ Route::group(['prefix' => 'admin','middleware' => ['isAdmin','auth']], function(
 
 Route::group(['prefix' => 'employer','middleware' => ['isEmployer','auth']], function(){
     Route::get('dashboard',[EmployerController::class,'index'])->name('employer.dashboard');
-    Route::get('profile',[EmployerController::class,'profile'])->name('employer.profile');
+    Route::resource('profile', EmployerProfileController::class );
+   // Route::get('profile',[EmployerController::class,'create'])->name('employer.create');
     Route::get('settings',[EmployerController::class,'settings'])->name('employer.settings');
     Route::resource('departments', DepartmentController::class );
     Route::get('departments/status/{id}/{status}', 'App\Http\Controllers\DepartmentController@status');

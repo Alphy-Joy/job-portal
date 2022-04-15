@@ -42,4 +42,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     /**
+     * Get the employer profile record associated with the user.
+     */
+    public function employer_profile()
+    {
+        return $this->hasOne('App\EmployerProfile');
+    }
 }

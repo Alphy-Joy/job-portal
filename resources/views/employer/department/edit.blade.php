@@ -21,7 +21,7 @@
               <label for="exampleInputUsername1">Department Short Code</label>
               <input type="text" class="form-control" id="code" name="code" value="{{ $department->code }}">
             </div>
-            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+            <button type="submit" class="btn btn-gradient-primary me-2">Update</button>
             <button type="reset" class="btn btn-outline-danger btn-fw">Reset</button>
           </form>
         </div>
