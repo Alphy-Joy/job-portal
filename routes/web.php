@@ -11,6 +11,7 @@ use App\Http\Controllers\StateController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SkillContoller;
 use App\Http\Controllers\Auth\RegisterEmployerController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,9 +47,10 @@ Route::group(['prefix' => 'employer','middleware' => ['isEmployer','auth']], fun
     Route::get('dashboard',[EmployerController::class,'index'])->name('employer.dashboard');
     Route::resource('profile', EmployerProfileController::class );
    // Route::get('profile',[EmployerController::class,'create'])->name('employer.create');
-    Route::get('settings',[EmployerController::class,'settings'])->name('employer.settings');
+   // Route::get('settings',[EmployerController::class,'settings'])->name('employer.settings');
     Route::resource('departments', DepartmentController::class );
     Route::get('departments/status/{id}/{status}', 'App\Http\Controllers\DepartmentController@status');
+    Route::resource('jobs', JobController::class );
 });
 
 Route::group(['prefix' => 'jobseeker','middleware' => ['isJobseeker','auth']], function(){
