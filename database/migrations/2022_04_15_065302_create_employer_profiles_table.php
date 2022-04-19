@@ -21,6 +21,7 @@ class CreateEmployerProfilesTable extends Migration
             $table->longText('description')->nullable();
             $table->string('website')->nullable();
             $table->string('contact_number')->nullable();
+            $table->boolean('status');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
             ->onDelete('cascade');

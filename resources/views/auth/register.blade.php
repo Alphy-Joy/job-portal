@@ -16,6 +16,7 @@
 
                 <div class="form-group">
                     <select name="role" id="role" class="form-control form-control-lg">
+                        <option>----Choose----</option>
                         <option value="2">Employer</option>
                         <option value="3">Jobseeker</option>
                     </select>

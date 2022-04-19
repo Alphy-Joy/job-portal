@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SkillContoller;
+use App\Http\Controllers\Auth\RegisterEmployerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,5 +58,8 @@ Route::group(['prefix' => 'jobseeker','middleware' => ['isJobseeker','auth']], f
 });
 
 Auth::routes();
+Route::resource('register-employer', 'App\Http\Controllers\Auth\RegisterEmployerController' );
+// Route::get('register-employer','App\Http\Controllers\Auth\RegisterEmployerController@index')->name('auth.registeremployer');
+// Route::post('register-employer', [RegisterEmployerController::class, 'store']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
